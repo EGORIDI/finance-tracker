@@ -24,6 +24,8 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'iex-ruby-client'
+gem "font-awesome-rails" # use font-awsome icons and fonts
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
