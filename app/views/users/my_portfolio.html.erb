@@ -17,6 +17,13 @@
   </div>
   <% end %>
 </div>
-<div id="results">
-
+<div id="results"> <!-- Here the results of the search are displayed. -->
 </div>
+
+<% if !@tracked_stocks.empty? %>
+  <%= render 'stocks/list' %>
+<% else %>
+<div class="card col-9">
+  <p>Your portfolio is currently empty!</p>
+</div>
+<% end %>

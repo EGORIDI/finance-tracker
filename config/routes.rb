@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_stocks, only: [:create, :destroy]
   # get 'users/my_portfolio'
   # this route was automatically generated but we are going to use another one
   devise_for :users
