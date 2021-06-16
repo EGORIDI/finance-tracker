@@ -1,12 +1,12 @@
-<h1>My portfolio</h1>
-<!-- <p>Find me in app/views/users/my_portfolio.html.erb</p> -->
+<h1>Hey ho! These are my friends </h1>
+<br>
 
 <div class="search-area">
-  <h3>Search stocks</h3>
-  <%= form_tag search_stock_path, remote: true, method: :get do %>
+  <h3>Search friends</h3>
+  <%= form_tag search_friend_path, remote: true, method: :get do %>
   <div class="form-group row">
     <div class="col-sm-9 no-right-padding">
-      <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol",
+      <%= text_field_tag :friend, params[:friend], placeholder: "Friend name",
       autofocus: true, class:"form-control form-control-lg" %> <!-- Here should be the ticker capitalization, I guess  -->
     </div>
     <div class="col-sm-3 no-left-padding">
@@ -17,13 +17,16 @@
   </div>
   <% end %>
 </div>
-<div id="results"> <!-- Here the results of the search are displayed. -->
+
+<div id="friend-results"> <!-- Here the results of the search are displayed. -->
+
 </div>
 
-<% if !@tracked_stocks.empty? %>
-  <%= render 'stocks/list' %>
+
+<% if !@user_friends.empty? %>
+  <%= render 'friends/list' %>
 <% else %>
 <div class="card col-9">
-  <p>Your portfolio is currently empty!</p>
+  <p>So sad, you have no friends... 😔 </p>
 </div>
 <% end %>

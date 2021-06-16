@@ -10,7 +10,7 @@ class Stock < ApplicationRecord
     # secret_token: 'secret_token',
     endpoint: 'https://sandbox.iexapis.com/v1')
     #client.price(ticker_symbol) #no need to use 'return' for it is implied.
-    begin
+    begin # I added the upcase so to avoid minors in tickers saved to the database
       new(ticker: ticker_symbol, name: client.company(ticker_symbol).company_name, last_price: client.price(ticker_symbol))
     rescue => exception
       return nil
