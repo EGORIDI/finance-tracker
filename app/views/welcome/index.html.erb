@@ -1,8 +1,7 @@
 <h1>Hi <%= current_user.email %>, Welcome to Portafoille!</h1>
 <h2>...a stock-tracker app!</h2>
 <p>
-  Find me in app/views/welcome/index.html.erb <br>
-    The time is now: <%= Time.now %>
+  Disclaimer - this is not an investment app. All the data here is fictitious.
 </p>
 
 <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
