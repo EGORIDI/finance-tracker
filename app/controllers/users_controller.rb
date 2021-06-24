@@ -17,6 +17,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def needy
+    @needy = []
+    User.all.each { |u| @needy << {user_id: u.id , following: u.friends.count} }
+    @needy.sort_by! { |n| -n[:following]}
+  end
+
   def show
     @user = User.find(params[:id])
     @tracked_stocks = @user.stocks

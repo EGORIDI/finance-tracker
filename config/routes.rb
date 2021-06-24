@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   resources :users, only: [:show]
   get 'my_followers', to: 'users#my_followers'
+  get 'rankings/needy', to: 'users#needy'
 
 end
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

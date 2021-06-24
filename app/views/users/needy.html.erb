@@ -1,0 +1,40 @@
+<h2>These are the friendlier people around!</h2>
+
+<p>Why I'm needy.. I'm needy like a sunday morning....</p>
+
+<div class="row col-12">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Following</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @needy.each do |needy| %>
+        <% needy_user = User.find(needy[:user_id]) %>
+        <tr>
+          <td><%= needy[:following] %></td>
+          <td><%= needy_user.email %></td>
+          <td><%= needy_user.first_name %></td>
+          <td><%= needy_user.last_name %></td>
+          <td>
+            <%= link_to 'View Profile', user_path(needy_user),
+                                  class: 'btn btn-sm btn-success' %>
+            <% if current_user.not_friends_with?(needy_user.id) %>
+                  <%= link_to 'Follow friend?', friendships_path(friend: needy_user),
+                                class: "btn btn-sm btn-success", method: :post %>
+            <% else %>
+              <span class="badge badge-primary">
+                You are friends
+              </span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
