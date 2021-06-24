@@ -8,6 +8,15 @@ class UsersController < ApplicationController
     @user_friends = current_user.friends
   end
 
+  def my_followers
+    @user = current_user
+    @friendships = Friendship.where(friend_id: @user)
+    @followers = []
+    @friendships.each do |friendship|
+      @followers << User.find(friendship.user_id)
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @tracked_stocks = @user.stocks

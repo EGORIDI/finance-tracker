@@ -1,0 +1,33 @@
+<div class="row col-9">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">E-mail</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @followers.each do |follower| %>
+        <tr>
+          <td><%= follower.email %></td>
+          <td><%= follower.first_name %></td>
+          <td><%= follower.last_name %></td>
+          <td>
+            <%= link_to 'View Profile', user_path(follower),
+                                  class: 'btn btn-sm btn-success' %>
+            <% if current_user.not_friends_with?(follower.id) %>
+                  <%= link_to 'Follow friend?', friendships_path(friend: follower),
+                                class: "btn btn-sm btn-success", method: :post %>
+            <% else %>
+              <span class="badge badge-primary">
+                You are friends
+              </span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,10 @@
+<h2>These are my followers:</h2>
+<br>
+
+<% if !@followers.empty? %>
+  <%= render 'friends/followers' %>
+<% else %>
+  <div class="card col-9">
+    <p>So sad, nobody follows you... 😔 </p>
+  </div>
+<% end %>
