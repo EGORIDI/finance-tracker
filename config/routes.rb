@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   get 'my_followers', to: 'users#my_followers'
   get 'rankings/needy', to: 'users#needy'
+  get 'rankings/popular', to: 'users#popular'
 
 end
 # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

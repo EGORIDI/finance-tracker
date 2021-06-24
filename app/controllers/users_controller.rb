@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     @needy.sort_by! { |n| -n[:following]}
   end
 
+  def popular
+    @popular = []
+    User.all.each do |u| 
+      @popular << {user_id: u.id , followed:Friendship.where(friend_id: u.id).count  }
+    end
+    @popular.sort_by! { |popular| -popular[:followed]}
+  end
+
   def show
     @user = User.find(params[:id])
     @tracked_stocks = @user.stocks
